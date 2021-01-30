@@ -16,17 +16,17 @@ import org.junit.BeforeClass
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class ImageTypeDetectorTest {
+class ImageFormatDetectorTest {
     companion object {
         private lateinit var context: Context
-        private lateinit var imageTypeDetector: ImageTypeDetector
+        private lateinit var imageFormatDetector: ImageFormatDetector
 
         @BeforeClass
         @JvmStatic
         fun init() {
             context = InstrumentationRegistry.getInstrumentation().context
 
-            imageTypeDetector = ImageTypeDetector(
+            imageFormatDetector = ImageFormatDetector(
                 listOf(
                     ImageMatchingFactory.getJpegSignature(),
                     ImageMatchingFactory.getPngSignature()
@@ -41,11 +41,11 @@ class ImageTypeDetectorTest {
         val stream = context.assets.open("sample_jpeg.jpg")
 
         // Act
-        val imageType = imageTypeDetector.getImageType(stream)
+        val imageType = imageFormatDetector.getImageType(stream)
         stream.close()
 
         // Assert
-        assertEquals(ImageType.JPEG, imageType)
+        assertEquals(ImageFormat.JPEG, imageType)
     }
 
     @Test
@@ -54,11 +54,11 @@ class ImageTypeDetectorTest {
         val stream = context.assets.open("sample_png.png")
 
         // Act
-        val imageType = imageTypeDetector.getImageType(stream)
+        val imageType = imageFormatDetector.getImageType(stream)
         stream.close()
 
         // Assert
-        assertEquals(ImageType.PNG, imageType)
+        assertEquals(ImageFormat.PNG, imageType)
     }
 
     @Test
@@ -67,11 +67,11 @@ class ImageTypeDetectorTest {
         val stream = context.assets.open("sample_undefined.txt")
 
         // Act
-        val imageType = imageTypeDetector.getImageType(stream)
+        val imageType = imageFormatDetector.getImageType(stream)
         stream.close()
 
         // Assert
-        assertEquals(ImageType.UNDEFINED, imageType)
+        assertEquals(ImageFormat.UNDEFINED, imageType)
     }
 
     @Test
@@ -80,11 +80,11 @@ class ImageTypeDetectorTest {
         val stream = context.assets.open("sample_empty.txt")
 
         // Act
-        val imageType = imageTypeDetector.getImageType(stream)
+        val imageType = imageFormatDetector.getImageType(stream)
         stream.close()
 
         // Assert
-        assertEquals(ImageType.UNDEFINED, imageType)
+        assertEquals(ImageFormat.UNDEFINED, imageType)
     }
 
     @Test
@@ -93,9 +93,9 @@ class ImageTypeDetectorTest {
         val stream = null
 
         // Act
-        val imageType = imageTypeDetector.getImageType(stream)
+        val imageType = imageFormatDetector.getImageType(stream)
 
         // Assert
-        assertEquals(ImageType.UNDEFINED, imageType)
+        assertEquals(ImageFormat.UNDEFINED, imageType)
     }
 }

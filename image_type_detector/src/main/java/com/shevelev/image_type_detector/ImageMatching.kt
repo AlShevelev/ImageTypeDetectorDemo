@@ -3,11 +3,11 @@ package com.shevelev.image_type_detector
 /**
  * Checks that a tested sequence of bytes matches a standard sequence of bytes
  * @param standardStamp unique set of bytes from an image header
- * @param type a type of an image for this checking
+ * @param format a type of an image for this checking
  */
 class ImageMatching(
     private val standardStamp: ByteArray,
-    val type: ImageType
+    val format: ImageFormat
 ) {
     /**
      * Size of the standard stamp in bytes

@@ -1,9 +1,9 @@
 package com.shevelev.image_type_detector
 
 /**
- * Set of image types
+ * Set of image formats
  */
-enum class ImageType {
+enum class ImageFormat {
     /**
      * Jpeg
      */

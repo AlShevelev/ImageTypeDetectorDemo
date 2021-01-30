@@ -14,7 +14,7 @@ object ImageMatchingFactory {
                 0xD8.toByte(),
                 0xFF.toByte()
             ),
-            ImageType.JPEG
+            ImageFormat.JPEG
         )
 
     /**
@@ -32,6 +32,6 @@ object ImageMatchingFactory {
                 0x1A.toByte(),
                 0x0A.toByte()
             ),
-            ImageType.PNG
+            ImageFormat.PNG
         )
 }
